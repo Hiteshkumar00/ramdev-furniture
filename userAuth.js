@@ -3,7 +3,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     req.flash("error", "You must be logged in!");
     return res.redirect("/user/login");
   };
-  next();
+  return next();
 };
 
 const User = require("./models/user.js");
@@ -15,7 +15,7 @@ module.exports.isOwner = async (req, res, next) => {
     req.flash("error", "You are not this user.");
     return res.redirect("/user/login");
   };
-  next();
+  return next();
 };
 
 

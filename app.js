@@ -7,7 +7,8 @@ if(process.env.NODE_ENV != "production"){
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const path = require("path"); 
+const path = require("path");
+const port = process.env.PORT || 8080; 
 
 //use ejs as view engine
 app.set("view engine", "ejs");
@@ -237,14 +238,14 @@ app.post("/admin/login", (req, res) => {
       if(req.body.admin.username.trim() === process.env.AD_USER && req.body.admin.password.trim() === process.env.AD_PASS){
         req.session.admin = req.body.admin;
         req.flash("success", "Login Successfull!");
-        res.redirect("/admin");
+        return res.redirect("/admin");
       }else{
         req.flash("error", "Wrong username or password!");
-        res.redirect("/admin/login");
+        return res.redirect("/admin/login");
       }
     }else{
       req.flash("error", "Invalid Request!");
-      res.redirect("/item");
+      return res.redirect("/item");
     }
   }else{
     req.flash("error", "Invalid Request!");
@@ -606,6 +607,6 @@ app.use((err, req, res, next) => {
 });
 
 //listing
-app.listen(4040, () => {
-  console.log("App is listening on port 4040.");
+app.listen(port, () => {
+  console.log(`App is listening on port ${port}`);
 });
