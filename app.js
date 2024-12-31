@@ -169,13 +169,13 @@ const {isAdmin} = require("./adminAuth.js");
 app.get("/admin", isAdmin, wrapAsync(async (req, res) => {
   let items = await Item.find();
   items.reverse();
-  res.render("admin/adminpanel.ejs", {items});
+  res.render("admin/adminPanel.ejs", {items});
 }));
 
 app.get("/admin/item/new",isAdmin, wrapAsync( async (req, res) => {
 
   let categorys = await Category.find();
-  res.render("admin/newitem.ejs", {categorys});
+  res.render("admin/newItem.ejs", {categorys});
 }));
 
 app.post("/admin/item", isAdmin, upload.single('item[image]'),wrapAsync( async (req, res) => {
