@@ -102,7 +102,7 @@ body{
 }
 .show-card img{
   border-radius: 0.5rem;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 3 / 3;
   object-fit: cover;
 }
 
@@ -337,6 +337,7 @@ body{
 
 
 .footer{
+  font-size: .9rem;
   padding: 0;
   padding-top: 3rem;
   margin: 0;
@@ -385,8 +386,8 @@ body{
 /* static button */
 
 .static-plus-btn{
-  box-shadow: 1px 1px 5px green;
-  font-size: 2rem;
+  box-shadow: 0 0 5px black;
+  font-size: 2.2rem;
   height: 3.3rem;
   width: 3.3rem;
   padding: 0;

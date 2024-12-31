@@ -470,7 +470,6 @@ app.post("/item/:id/review", isLoggedIn, wrapAsync(async (req, res)=>{
   await newReview.save();
   await item.save();
   req.flash("success", "Review Successfully Sent!");
-
   res.redirect(`/item/${req.params.id}`);
 }));
 
