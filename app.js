@@ -149,15 +149,6 @@ app.get("/item/:id",wrapAsync( async(req, res) => {
   })
   .populate("owner");
 
-  
-  // for(let i=0; i<item.reviews.length; i++){
-  //   let review = item.reviews[i];
-  //   if(review.owner.image.url){
-  //     review.owner.image.url = review.owner.image.url.replace("/upload", "/upload/q_10");
-  //   }
-  //   item.reviews[i] = review;
-  // }
-
   res.render("items/show.ejs",{item});
 }));
 
