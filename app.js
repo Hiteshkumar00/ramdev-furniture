@@ -234,7 +234,7 @@ app.post("/admin/login", (req, res) => {
   } 
   if(req.body.admin){
     if(req.body.admin.username && req.body.admin.password){
-      if(req.body.admin.username === process.env.AD_USER && req.body.admin.password === process.env.AD_PASS){
+      if(req.body.admin.username.trim() === process.env.AD_USER && req.body.admin.password.trim() === process.env.AD_PASS){
         req.session.admin = req.body.admin;
         req.flash("success", "Login Successfull!");
         res.redirect("/admin");
@@ -368,7 +368,7 @@ app.post("/user/forgot", wrapAsync(async(req, res) => {
   const {user} = req.body;
   let countuser = await User.findOne({email: user.email});
   if(!countuser){
-    req.flash("error", `"${user.email}", is not registered.`);
+    req.flash("error", `Email is not registered.`);
     return res.redirect("/user/signup");
   }
   const redirect = req.body.redirect;

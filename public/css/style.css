@@ -1,6 +1,5 @@
 body{
-  font-family: "Plus Jakarta Sans", serif;
-  font-optical-sizing: auto;
+  font-family: "Plus Jakarta Sans", sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -30,9 +29,9 @@ body{
 
 .navbar-brand{
   font-size: 1.6rem;
-  font-family: "Plus Jakarta Sans", serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal
 }
 
@@ -64,7 +63,7 @@ body{
 
 .item-card{
   border: none;
-  box-shadow: 0 0 4px #0d6efd;
+  box-shadow: 0 0 2px #0d6efd;
   padding: 0;
 }
 
@@ -296,7 +295,6 @@ body{
 
 .category-on-item{
   overflow: auto;
-  padding-left: .5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -313,7 +311,7 @@ body{
 }
 
 .category-on-item-img{
-  box-shadow: 0 0 6px #0d6efd;
+  box-shadow: 0 0 2px #0d6efd;
   object-fit: cover;
   height: 3.5rem;
   width: 3.5rem;
@@ -324,6 +322,13 @@ body{
   opacity: 0.9;
   cursor: pointer;
   box-shadow: 0 0 8px #0d6efd;
+}
+
+.category-on-item-div p{
+  font-size: small;
+  text-wrap: nowrap;
+  width: 3.5rem;
+  overflow: hidden;
 }
 
 
