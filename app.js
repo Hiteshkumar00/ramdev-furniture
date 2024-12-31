@@ -111,7 +111,7 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   res.locals.currAdmin = req.session.admin;
   res.locals.currUser = req.user;
-  next();
+  return next();
 });
 
 
@@ -280,7 +280,7 @@ app.get("/user/verifyemail", (req, res) => {
     return res.render("users/verifyEmail.ejs", {email, redirect});
   }
   req.flash("error", "Verify data not found!");
-  res.redirect("/item");
+  return res.redirect("/item");
 });
 
 app.post("/user/signup",wrapAsync( async (req, res) => {
