@@ -25,26 +25,29 @@
 
 <% if(currAdmin) {%>
   <style>
-    .delete-btn{
-      padding: 1rem;
-      text-align: center;
-      display: inline-block;
+    .delete-form{
       position: fixed;
-      border-radius: .3rem;
-      background-color: #cadfff;
-      box-shadow: 0 0 4px #0d6efd;
-      border-radius: .3rem;
+      top: 0px;
+      left: 0px;
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+      background-color: rgb(255, 255, 255, 0.8);
     }
+
   </style>
 
-  <form class="delete-btn top-50 start-50 translate-middle" id="hidden-delete" method="post" hidden>
-    <p>Delete this Post.</p>
-    <div class="category-btns"></div>
-      <button type="submit" class="btn hidden-delete btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i> Delete</button>
+
+
+  <form class="delete-form" id="hidden-delete" method="post" hidden>
+    <div class="category-btns position-absolute top-50 start-50 translate-middle">
+      <p>Delete this post?</p>
+      <button type="submit" class="btn hidden-delete btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button>
       &nbsp;&nbsp;
-      <button type="button" id="hide-dismiss" class="btn btn-outline-primary btn-sm">No</button>
+      <button type="button" id="hide-dismiss" class="btn btn-primary">&nbsp; No &nbsp;</button>
     </div>
   </form> 
+
 
 
   <script>

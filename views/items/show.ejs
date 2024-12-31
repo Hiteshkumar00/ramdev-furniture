@@ -83,9 +83,7 @@
             <br>
             <div class="time-div">
               <% if(currUser && currUser._id.equals(review.owner._id)) {%>
-                <form class="button-form" action="/item/<%= item._id %>/review/destory/<%= review._id %>?_method=DELETE" method="post">
-                  <button class="btn btn-sm"><a class="span-delete">delete</a></button>
-                </form>
+                  <button value="/item/<%= item._id %>/review/destory/<%= review._id %>?_method=DELETE" class="btn btn-sm delete-conform"><a class="span-delete">delete</a></button>
               <% }else{ %>
                 <span></span>
               <% } %>
@@ -104,3 +102,53 @@
 </div>
 
 <div class="btn btn-success btn-lg static-plus-btn"><a href="https://wa.me/9484768192"><i class="fa-brands fa-whatsapp"></i></a></div>
+
+
+<% if(currUser){ %>
+<!-- delete review style -->
+
+<style>
+  .delete-form{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(255, 255, 255, 0.8);
+  }
+
+</style>
+
+
+
+<form class="delete-form" id="hidden-delete" method="post" hidden>
+  <div class="category-btns position-absolute top-50 start-50 translate-middle">
+    <p>Delete this item?</p>
+    <button type="submit" class="btn hidden-delete btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button>
+    &nbsp;&nbsp;
+    <button type="button" id="hide-dismiss" class="btn btn-primary">&nbsp; No &nbsp;</button>
+  </div>
+</form> 
+
+
+<script>
+
+  let delete_btns = document.getElementsByClassName("delete-conform");
+  let hidden_delete = document.getElementById("hidden-delete");
+  let hide_dissmiss = document.getElementById("hide-dismiss");
+
+  for(delete_btn of delete_btns){
+    delete_btn.addEventListener("click", () => {
+      let link = delete_btn.value;
+      hidden_delete.action=link;
+      hidden_delete.hidden = false;
+    });
+  };
+  hide_dissmiss.addEventListener("click", () => {
+    hidden_delete.hidden = true;
+  });
+
+</script>
+
+<% } %>

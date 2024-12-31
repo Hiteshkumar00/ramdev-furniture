@@ -22,7 +22,7 @@
   <a class="item-ancher card col-5 col-md-3 item-card" href="/item/<%= item._id %>">
     <img src="<%= item.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top" alt="...">
     <div class="card-body item-card-body">
-      <h5>&nbsp; <%= item.name %></h5>
+      <p class="item-name"><%= item.name %></p>
     </div>
   </a>  
   <% } %>

@@ -73,7 +73,7 @@ body{
 }
 
 .item-card-body{
-  padding: 0;
+  padding: .2rem;
   padding-top: .5rem;
 }
 
@@ -86,6 +86,13 @@ body{
 .item-ancher{
   display: inline-block;
   text-decoration: none;
+}
+
+.item-name{
+  font-weight: 500;
+  text-wrap: nowrap;
+  overflow: hidden;
+  margin: 0;
 }
 
 

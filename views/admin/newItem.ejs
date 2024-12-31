@@ -19,7 +19,7 @@
           <option selected>Select item category</option>
           <% for(category of categorys){ %>
             <option value="<%= category._id %>"><%= category.name %></option>
-          <% } %>
+          <% } %> 
         </select>
       </div>
       <div class="mb-3">
@@ -34,7 +34,7 @@
           <div class="mb-3 col-6 offset-1">
             <input class="form-control" type="text" name="item[Value]" multiple placeholder="Value" required>
           </div> 
-          <button type="button" class="mb-3 btn btn-outline-danger col-1 delete-key-value"><i class="fa-regular fa-circle-xmark"></i></button>
+          <button type="button" class="mb-3 btn btn-outline-danger col-1 delete-key-value">&#10006;</button>
         </div>
       </div>
       <div class="mb-5"><button type="button" class="btn btn-outline-primary btn-sm" id="add-key-value">add key value</button></div>
@@ -53,7 +53,7 @@
       <div class="mb-3 col-6 offset-1">
         <input class="form-control" type="text" name="item[Value]" multiple placeholder="Value" required>
       </div> 
-      <button type="button" class="mb-3 btn btn-outline-danger col-1 delete-key-value"><i class="fa-regular fa-circle-xmark"></i></button>
+      <button type="button" class="mb-3 btn btn-outline-danger col-1 delete-key-value">&#10006;</button>
     </div>
     
   </div>  
