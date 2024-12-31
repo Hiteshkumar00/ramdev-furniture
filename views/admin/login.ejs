@@ -1,0 +1,22 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="mb-3 top-head">Admin Login</h4>
+    <form action="/admin/login" method="post" novalidate class="needs-validation">
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input id="username" class="form-control" type="text" name="admin[username]" placeholder="Username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" class="form-control" type="password" name="admin[password]" placeholder="Password" required>
+      </div>
+      <div class="mt-5">
+        <button type="submit" class="btn btn-primary me-5">Login</button>
+      </div>
+
+    </form>
+  </div>  
+</div>

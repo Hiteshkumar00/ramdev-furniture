@@ -1,0 +1,26 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="mb-3 top-head">Reset password</h4>
+    <form action="/user/forgot" method="post" novalidate class="needs-validation">
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" class="form-control" type="email" name="user[email]" placeholder="Email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">New password</label>
+        <input id="password" class="form-control" type="password" name="user[password]" placeholder="New password" required>
+      </div>
+      <div class="btn-center">
+        <div class="mt-5 mb-3">
+          <button name="redirect" value="/user/reset" type="submit" class="btn btn-primary">Reset Password</button>
+        </div>
+        <div class="mb-3">
+          <a href="/user/signup">Sign Up?</a>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>

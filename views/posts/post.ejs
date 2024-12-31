@@ -1,0 +1,27 @@
+<% layout("/templates/boilerplate2.ejs") %>
+
+<div class="row justify-content-evenly gap-1">
+  <h4 class="top-head mb-3">Happy customers &#128578;</h4>
+  <% for(let post of posts){ %>
+  <div class="card col-md-5 col-10 mb-3 post-card" href="/item/<%= post._id %>">
+    <img src="<%= post.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top mb-3" alt="...">
+    <div class="card-body mb-3 post-card-body">
+      <p><%= post.message || "Thank you for visiting us" %></p>
+      
+      <% let time = post.createdAt.toString().split(" ") %>
+      <div class="post-time"><%= "".concat(time[1]," ", time[2], " ", time[3]) %></div>
+
+      <% if(currAdmin) {%>
+      <div class="category-btns">
+        <a href="/admin/post/edit/<%= post._id %>" class="no-style"><button class="btn btn-outline-warning btn-sm"><i class="fa-regular fa-pen-to-square"></i> Edit</button></a> 
+        &nbsp; &nbsp;
+        <form class="button-form" action="/admin/post/destory/<%= post._id %>?_method=DELETE" method="post">
+          <button class="btn btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i> Delete</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </div>  
+  <% } %>
+</div>
+

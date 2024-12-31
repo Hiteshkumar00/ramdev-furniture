@@ -1,0 +1,60 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="top-head">Add New Item</h4>
+    <form action="/admin/item" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input id="title" class="form-control" type="text" name="item[name]" placeholder="Item Name" required>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input id="image" class="form-control" type="file" name="item[image]" required>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Item category</label>
+        <select id="category" class="form-select" name="item[category]" aria-label="Select item category">
+          <option selected>Select item category</option>
+          <% for(category of categorys){ %>
+            <option value="<%= category._id %>"><%= category.name %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input id="price" class="form-control" type="number" name="item[price]" placeholder="Price">
+      </div>
+      <div id="key-value-div">
+        <div class="row" id="key-value">
+          <div class="mb-3 col-4">
+            <input class="form-control" type="text" name="item[key]" multiple placeholder="Key" required>
+          </div>
+          <div class="mb-3 col-6 offset-1">
+            <input class="form-control" type="text" name="item[Value]" multiple placeholder="Value" required>
+          </div> 
+          <button type="button" class="mb-3 btn btn-outline-danger col-1 delete-key-value"><i class="fa-regular fa-circle-xmark"></i></button>
+        </div>
+      </div>
+      <div class="mb-5"><button type="button" class="btn btn-outline-primary btn-sm" id="add-key-value">add key value</button></div>
+    
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary me-5">Save</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+      </div>
+
+    </form>
+
+    <div class="row" id="copy" hidden>
+      <div class="mb-3 col-4">
+        <input class="form-control" type="text" name="item[key]" multiple placeholder="Key" required>
+      </div>
+      <div class="mb-3 col-6 offset-1">
+        <input class="form-control" type="text" name="item[Value]" multiple placeholder="Value" required>
+      </div> 
+      <button type="button" class="mb-3 btn btn-outline-danger col-1 delete-key-value"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+    
+  </div>  
+</div>

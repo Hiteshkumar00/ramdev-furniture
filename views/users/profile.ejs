@@ -1,0 +1,39 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <div class="center-profile">
+      <div class="mb-3">
+        <div>
+          <img class="profile-img" src="<%= user.image.url || "https://res.cloudinary.com/dklooe01h/image/upload/q_40/v1735405348/ramdev_furniture_item/rukabjgfowjardtuftru.jpg" %>" alt="profile">
+        </div>
+      </div>
+      <div class="mb-3 profile-name">
+        <h5>@<%= user.username %></h5>
+        <h5><%= user.name || "name not added"%></h5>
+        <p class="mb-3 mt-3">
+          
+            <a class="no-style" href="/user/profile/edit/<%= user._id %>">
+              <button class="btn btn-sm btn-outline-warning"><i class="fa-regular fa-pen-to-square"></i> Edit profile</button>
+            </a>
+          
+        </p>
+      </div>
+    </div>
+    
+    <hr>
+    <div class="mb-3">
+      <p class="mb-3"><B>Contact info</B></p>
+      <p>&nbsp;<%= user.email %></p>
+      <p>&nbsp;<%= user.phone_no || "phone no not added"%></p>
+    </div>
+    <div class="mb-3">
+      <p class="mb-3"><b>Address</b></p>
+      <p>&nbsp;<%= user.address.location || "address not added" %></p>
+      <p>&nbsp;<%= user.address.town || "area not added" %></p>
+      <p>&nbsp;<%= user.address.city || "city not added" %></p>
+      <p>&nbsp;<%= user.address.pincode || "pin code not added"%></p>
+    </div>
+    <div class="space"></div>
+  </div>
+</div>

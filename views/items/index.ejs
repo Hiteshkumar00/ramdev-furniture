@@ -1,0 +1,33 @@
+<% layout("/templates/boilerplate2.ejs") %>
+
+
+<div class="category-on-item">
+  <a href="/item" class="category-on-item-div">
+    <img class="category-on-item-img" src="https://res.cloudinary.com/dklooe01h/image/upload/q_10/v1735490125/accets/ufbhndg0ldoevuooytiq.jpg" alt="...">
+    <p>All</p>
+  </a>
+  <% for(category of categorys){ %>
+    <a href="/item?cat=<%= category._id %>" class="category-on-item-div">
+      <img class="category-on-item-img" src="<%= category.image.url.replace("/upload", "/upload/q_10") %>" alt="...">
+      <p><%= category.name %></p>
+    </a>
+  <% } %>
+  
+</div>
+
+
+
+<div class="items row justify-content-evenly gap-1">
+  <% for(let item of items){ %>
+  <a class="item-ancher card col-5 col-md-3 item-card" href="/item/<%= item._id %>">
+    <img src="<%= item.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top" alt="...">
+    <div class="card-img-overlay item-overlay"></div>
+    <div class="card-body item-card-body">
+      <h5>&nbsp; <%= item.name %></h5>
+    </div>
+  </a>  
+  <% } %>
+</div>
+
+
+<div class="btn btn-success btn-lg static-plus-btn"><a href="https://wa.me/9484768192"><i class="fa-brands fa-whatsapp"></i></a></div>

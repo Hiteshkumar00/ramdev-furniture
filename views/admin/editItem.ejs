@@ -1,0 +1,69 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="top-head">Edit Item</h4>
+    <form action="/admin/item/edit/<%= item._id %>?_method=PUT" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input id="title" class="form-control" type="text" name="item[name]" value="<%= item.name %>" placeholder="Item Name" required>
+      </div>
+      <div class="mb-3 ">
+        <img class="editImg" src="<%= item.image.url.replace("/upload", "/upload/q_10") %>" alt="...">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input id="image" class="form-control" type="file" name="item[image]">
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Item category</label>
+        <select id="category" class="form-select" name="item[category]" aria-label="Select item category">
+          <option>Select item category</option>
+          <% for(category of categorys){ %>
+            <% if(category._id == item.category){ %>
+              <option selected value="<%= category._id %>"><%= category.name %></option>
+            <% }else{ %>
+              <option value="<%= category._id %>"><%= category.name %></option>
+            <% } %>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input id="price" class="form-control" type="number" <% if(item.price){ %> value="<%= item.price %>" <% } %>name="item[price]" placeholder="Price">
+      </div>
+      <div id="key-value-div"> 
+        <% for(let i=0; i < item.key.length; i++){ %>
+          <div class="row" id="key-value">
+            <div class="mb-3 col-4">
+              <input class="form-control" type="text" name="item[key]" value="<%= item.key[i] %>" placeholder="Key" required>
+            </div>
+            <div class="mb-3 col-6 offset-1">
+              <input class="form-control" type="text" name="item[Value]" value="<%= item.Value[i] %>" placeholder="Value" required>
+            </div> 
+            <button type="button" class="mb-3 btn btn-sm btn-outline-danger col-1 delete-key-value"><i class="fa-regular fa-circle-xmark"></i></button>
+          </div>
+          <% } %>
+      </div>
+      <div class="mb-5"><button type="button" class="btn btn-outline-primary btn-sm" id="add-key-value">add key value</button></div>
+    
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary me-5">Save</button>
+      </div>
+    </form>
+
+
+    <div class="row" id="copy" hidden>
+      <div class="mb-3 col-4">
+        <input class="form-control" type="text" name="item[key]" multiple placeholder="Key" required>
+      </div>
+      <div class="mb-3 col-6 offset-1">
+        <input class="form-control" type="text" name="item[Value]" multiple placeholder="Value" required>
+      </div> 
+      <button type="button" class="mb-3 btn btn-sm btn-outline-danger col-1 delete-key-value"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+
+
+  </div>  
+</div>

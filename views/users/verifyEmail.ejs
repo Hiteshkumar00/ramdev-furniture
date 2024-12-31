@@ -1,0 +1,20 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="mb-3 top-head">Verify it's you</h4>
+    <form action="<%= redirect %>" method="post" novalidate class="needs-validation">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" readonly name="email" class="form-control" type="text" value="<%= email %>" required>
+      </div>
+      <div class="mb-3">
+        <label for="otp" class="form-label">Enter Your Otp</label>
+        <input id="otp" class="form-control" type="number" name="otp" placeholder="Otp" required>
+      </div>
+      <div class="mt-5">
+        <button type="submit" class="btn btn-primary me-5">Verify Email</button>
+      </div>
+    </form>
+  </div>  
+</div>

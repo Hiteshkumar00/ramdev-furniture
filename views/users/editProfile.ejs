@@ -1,0 +1,42 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="top-head mb-3">Edit profile</h4>
+    <form action="/user/profile/edit/<%= user._id %>?_method=PUT" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+      <div class="mb-3 mt-3">
+        <img class="profile-edit-image" src="<%= user.image.url|| "https://res.cloudinary.com/dklooe01h/image/upload/q_10/v1735405348/ramdev_furniture_item/rukabjgfowjardtuftru.jpg"%>" alt="...">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Select Image</label>
+        <input id="image" class="form-control" type="file" name="user[image]">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Name</label>
+        <input class="form-control" type="text" name="user[name]" value="<%= user.name %>" placeholder="Name">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Valid Phone No</label>
+        <input class="form-control" type="text" value="<%= user.phone_no %>" name="user[phone_no]" placeholder="EnterValid Phone No">
+      </div>
+      <p class="mt-3 mb-3">Address</p>
+      <div class="mb-3">
+        <input class="form-control" type="text" value="<%= user.address.location %>" name="address[location]" placeholder="Address">
+      </div>
+      <div class="mb-3">
+        <input class="form-control" type="text" value="<%= user.address.town %>" name="address[town]" placeholder="Town / Area">
+      </div>
+      <div class="mb-3">
+        <input class="form-control" type="text" value="<%= user.address.city %>" name="address[city]" placeholder="City">
+      </div>
+      <div class="mb-3">
+        <input class="form-control" type="number" value="<%= user.address.pincode %>" name="address[pincode]" placeholder="Pin Code">
+      </div>
+    
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary mt-5">Save</button>
+      </div>
+    </form>
+    <div class="space"></div>
+  </div>  
+</div>

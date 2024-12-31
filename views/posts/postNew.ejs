@@ -1,0 +1,24 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="top-head">Add New Category</h4>
+    <form action="/admin/post/new" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input id="image" class="form-control" type="file" name="post[image]" required>
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <input id="message" class="form-control" type="text" name="post[message]" placeholder="Message...">
+      </div>
+    
+      <div class="mb-3 mt-5">
+        <button type="submit" class="btn btn-primary me-5">Post</button>
+      </div>
+
+    </form>
+    
+  </div>  
+</div>

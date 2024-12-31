@@ -1,0 +1,104 @@
+<% layout("/templates/boilerplate2.ejs") %>
+
+<div class="row">
+  <div class="card show-card col-10 offset-1 col-md-8  offset-md-2 col-lg-6 offset-lg-3">
+    
+    <h4 class="card-title mb-3 mt-3">&nbsp;<%= item.name %></h4>
+    <img src="<%= item.image.url.replace("/upload", "/upload/q_90") %>" class="card-img-top" alt="...">
+    <div class="card-body show-card-body">
+      <% if(item.price != ""){ %>
+        <p><b>Price : </b>&#8377; <%= item.price %></p>
+      <% } %>
+      <% for(let i=0; i < item.key.length; i++){ %>
+        <p><b><%= item.key[i] %> :</b> <%= item.Value[i] %></p>
+      <% } %>
+    </div>
+  </div>
+  
+  <!-- reviewsection -->
+  <div class="show-card col-10 offset-1 col-md-8  offset-md-2 col-lg-6 offset-lg-3">
+    <hr>
+    <div class="d-flex justify-content-between">
+      <% 
+        let sum = 0;
+        for(let review of item.reviews){
+          sum += review.rate;
+        }
+        let avgRate = sum / item.reviews.length;
+        avgRate = avgRate.toString() === "NaN"? 0 : avgRate;
+      %>
+      <p>Rating: <%= avgRate.toPrecision(2)  %>
+        &nbsp;
+        <% for(let i=0; i<avgRate.toPrecision(1); i++) { %>
+          <i class="fa-solid fa-star" style="color: #ffc800;"></i>
+        <% } %>
+        <% for(let i=0; i< 5-avgRate.toPrecision(1); i++) { %>
+          <i class="fa-regular fa-star" style="color: #ffc800;"></i>
+        <% } %>
+      </p>
+      <p>
+        <%= item.reviews.length %> reviews
+      </p>
+    </div>
+    
+    <hr>
+    <h5 class="mb-3">Leave review</h5>
+    <form class="mb-3" action="/item/<%= item._id %>/review" method="post">
+      <p>
+        <span class="star-rating">
+        <label for="rate-1" style="--i:1"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="review[rate]" id="rate-1" value="1">
+        <label for="rate-2" style="--i:2"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="review[rate]" id="rate-2" value="2">
+        <label for="rate-3" style="--i:3"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="review[rate]" id="rate-3" value="3">
+        <label for="rate-4" style="--i:4"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="review[rate]" id="rate-4" value="4" checked>
+        <label for="rate-5" style="--i:5"><i class="fa-solid fa-star"></i></label>
+        <input type="radio" name="review[rate]" id="rate-5" value="5">
+        </span>
+      </p>
+      <div class="row">
+        <div class="col col-10 col-md-6">  
+          <select class="form-select form-select mb-3" name="review[comment]" aria-label=".form-select-lg example">
+            <option selected value="excellent!">excellent!</option>
+            <option value="good!">good!</option>
+            <option value="average!">average!</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-outline-primary">Post review</button>
+    </form>
+
+    <h5 class="mt-5">Reviews</h5>
+    <div class="row">
+      <% for(let review of item.reviews.reverse()){ %>
+        <div class="review-card col col-10 offset-1 offset-md-0 col-md-5 mb-3">
+          <img class="review-img" src="<%= (review.owner.image.url || "https://res.cloudinary.com/dklooe01h/image/upload/q_10/v1735405348/ramdev_furniture_item/rukabjgfowjardtuftru.jpg").replace("/upload", "/upload/q_10") %>" alt="...">
+          <div class="review-body">
+            <b><%= review.owner.username %></b><br>
+            <span style="color: #ffc800;"><% for(let i=0;i < review.rate; i++) {%>★<% }%><% for(let i=0;i < 5 - review.rate; i++) {%>☆<% }%>
+            </span><br>
+            <span class="span-sm"><%= review.comment %></span>
+            <br>
+            <div class="time-div">
+              <% if(currUser && currUser._id.equals(review.owner._id)) {%>
+                <form class="button-form" action="/item/<%= item._id %>/review/destory/<%= review._id %>?_method=DELETE" method="post">
+                  <button class="btn btn-sm"><a class="span-delete">delete</a></button>
+                </form>
+              <% }else{ %>
+                <span></span>
+              <% } %>
+              <% let time = review.createdAt.toString().split(" ") %>
+              <div class="review-time"><%= "".concat(time[1]," ", time[2], " ", time[3]) %></div>       
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+  </div>
+
+
+  <!-- reviewsection -->
+</div>

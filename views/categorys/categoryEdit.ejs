@@ -1,0 +1,27 @@
+<% layout("/templates/boilerplate.ejs") %>
+
+<div class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2">
+    <h4 class="top-head">Edit category</h4>
+    <form action="/admin/category/edit/<%= category._id %>?_method=PUT" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+      
+      <div class="mb-3">
+        <label for="title" class="form-label">Category name</label>
+        <input id="title" class="form-control" type="text" name="category[name]" placeholder="Category name" value="<%= category.name %>" required>
+      </div>
+      <div class="mb-3 ">
+        <img class="editImg" src="<%= category.image.url.replace("/upload", "/upload/q_10") %>" alt="...">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload category Image</label>
+        <input id="image" class="form-control" type="file" name="category[image]" required>
+      </div>
+    
+      <div class="mb-3 mt-5">
+        <button type="submit" class="btn btn-primary me-5">Save</button>
+      </div>
+
+    </form>
+    
+  </div>  
+</div>
