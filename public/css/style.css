@@ -63,13 +63,13 @@ body{
 
 .item-card{
   border: none;
-  box-shadow: 0 0 2px #0d6efd;
   padding: 0;
 }
 
 .item-card img{
-  aspect-ratio: 3 / 2.5;
+  aspect-ratio: 3 / 3;
   object-fit: cover;
+  border-radius: .5rem;
 }
 
 .item-card-body{
@@ -80,7 +80,6 @@ body{
 .item-card:hover{
   opacity: 0.9;
   cursor: pointer;
-  box-shadow: 0 0 8px #0d6efd;
 }
 
 .item-ancher{
