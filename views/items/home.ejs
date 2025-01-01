@@ -16,7 +16,23 @@
   
 </div>
 
-<h5 class="heading-item-page mb-3">&nbsp;<%= heading %></h5>
+<style>
+  .youtube-video-home{
+    border-radius: .5rem;
+    margin-right: 0.65rem;
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+</style>
+
+
+  <iframe class="youtube-video-home mb-3"  src="https://www.youtube.com/embed/srXOiTcXRX0?si=Buf43e5du_klNbOu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+
+
+
+
+<h5 class="heading-item-page mb-3">&nbsp;All furniture</h5>
 
 <div class="items row justify-content-evenly gap-1">
   <% for(let item of items){ %>

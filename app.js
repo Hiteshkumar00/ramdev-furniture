@@ -121,24 +121,37 @@ const Item = require("./models/item.js");
 const Review = require("./models/review.js");
 const Category = require("./models/category.js");
 
-app.get("/", (req, res) => {
-  res.redirect("/item");
-});
-
 let randSort = require("./utils/sortRandom.js");
+app.get("/",wrapAsync( async (req, res) => {
+
+  let items = await Item.aggregate([{$sample: {size: 20}}]);;
+   
+  let categorys = await Category.find();
+  items = randSort(items);
+  res.render("items/home.ejs", {items, categorys});
+}));
+
 app.get("/item",wrapAsync( async (req, res) => {
   let items;
+  let heading = "All furniture";
   if(req.query.cat){
-    items = await Item.find({category: {_id : req.query.cat}});
+    try{
+      let categoryobjet = await Category.findById(req.query.cat);
+      heading = categoryobjet.name;
+      items = await Item.find({category: {_id : req.query.cat}});
+    }catch{
+      items = await Item.find();
+    }
   }else{
     items = await Item.find();
   }
   if(!items[0]){
     items = await Item.find();
+    heading = "All furniture";
   } 
   let categorys = await Category.find();
   items = randSort(items);
-  res.render("items/index.ejs", {items, categorys});
+  res.render("items/index.ejs", {items, categorys, heading});
 }));
 
 app.get("/item/:id",wrapAsync( async(req, res) => {

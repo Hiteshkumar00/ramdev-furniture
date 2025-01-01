@@ -13,7 +13,10 @@
         <ul class="navbar-nav flex-col d-flex align-items-start flex-column pe-3">
            <% if(!currAdmin) {%>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/item"><i class="fa-solid fa-store"></i> Home</a>
+              <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-store"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/item"><i class="fa-solid fa-couch"></i> Furniture</a>
             </li> 
             <% if(currUser) {%>
               <li class="nav-item">
@@ -38,10 +41,13 @@
             <% }%>
             <% }else {%>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/item"><i class="fa-solid fa-store"></i> Home</a>
+                <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-store"></i> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/item"><i class="fa-solid fa-couch"></i> Furniture</a>
               </li> 
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/admin"><i class="fa-solid fa-couch"></i> Items</a>
+                <a class="nav-link" aria-current="page" href="/admin"><i class="fa-solid fa-couch"></i> Manage items</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/admin/item/new"><i class="fa-solid fa-square-plus"></i> Add item</a>

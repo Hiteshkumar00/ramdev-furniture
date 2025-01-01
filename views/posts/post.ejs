@@ -1,7 +1,7 @@
 <% layout("/templates/boilerplate2.ejs") %>
 
 <div class="row justify-content-evenly gap-1">
-  <h4 class="top-head mb-3">Happy customers &#128578;</h4>
+  <h5 class="heading-item-page mb-3">&nbsp; Activitys</h5>
   <% for(let post of posts){ %>
   <div class="card col-md-5 col-10 mb-3 post-card" href="/item/<%= post._id %>">
     <img src="<%= post.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top mb-3" alt="...">
