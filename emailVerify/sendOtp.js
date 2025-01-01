@@ -43,11 +43,11 @@ async function sendOtp(user, otp) {
 
     }else{
       req.flash("error", "Wrong Request!, for email verify");
-      return res.redirect("/item");
+      return res.redirect("/");
     }
   }else{
     req.flash("error", "Wrong Request!, for email verify");
-    return res.redirect("/item");
+    return res.redirect("/");
   };
 }
 

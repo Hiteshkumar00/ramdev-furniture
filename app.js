@@ -199,7 +199,7 @@ app.get("/admin/item/edit/:id", isAdmin, wrapAsync( async(req, res) => {
   let categorys = await Category.find();
   if(!item){
     req.flash("error", "Item dose not exist!");
-    return res.redirect("/item");
+    return res.redirect("/");
   };
   res.render("admin/editItem.ejs", {item, categorys});
 }));
@@ -249,18 +249,18 @@ app.post("/admin/login", (req, res) => {
       }
     }else{
       req.flash("error", "Invalid Request!");
-      return res.redirect("/item");
+      return res.redirect("/");
     }
   }else{
     req.flash("error", "Invalid Request!");
-    res.redirect("/item");
+    res.redirect("/");
   }
 });
 
 app.get("/admin/logout", (req, res)=>{
   req.session.admin = undefined;
   req.flash("success", "Logout successful!");
-  res.redirect("/item");
+  res.redirect("/");
 });
 
 
@@ -293,7 +293,7 @@ app.get("/user/verifyemail", (req, res) => {
     return res.render("users/verifyEmail.ejs", {email, redirect});
   }
   req.flash("error", "Verify data not found!");
-  return res.redirect("/item");
+  return res.redirect("/");
 });
 
 app.post("/user/signup",wrapAsync( async (req, res) => {
@@ -316,7 +316,7 @@ app.post("/user/signup",wrapAsync( async (req, res) => {
             req.session.admin = undefined;
           }
           req.flash("success", `Welcome, ${username}`);
-          return res.redirect("/item")
+          return res.redirect("/")
         });
       }catch(err){
         if(err.keyValue.email){
@@ -350,8 +350,7 @@ app.post("/user/login", passport.authenticate("local", {
     req.session.admin = undefined
   }
   req.flash("success","Welcome back to Ramdev Furniture!");
-  let redirectUrl = "/item";
-  res.redirect(redirectUrl);
+  res.redirect("/");
 }));
 
 app.get("/user/logout", (req, res)=> {
@@ -405,7 +404,7 @@ app.post("/user/reset", wrapAsync(async(req, res) => {
             req.session.admin = undefined;
           }
           req.flash("success", `password changed, ${email}`);
-          return res.redirect("/item")
+          return res.redirect("/")
         });
       }catch(err){
         req.flash("error", err.message);
@@ -522,7 +521,7 @@ app.get("/admin/category/edit/:id", isAdmin, wrapAsync(async (req, res) => {
   const category = await Category.findById(id);
   if(!category){
     req.flash("error", "Category does not exist!");
-    return res.redirect("/item");
+    return res.redirect("/");
   }
   res.render("categorys/categoryEdit.ejs", {category});
 }));
@@ -573,7 +572,7 @@ app.get("/admin/post/edit/:id", isAdmin, wrapAsync(async (req, res) => {
   const post = await Post.findById(id);
   if(!post){
     req.flash("error", "Category does not exist!");
-    return res.redirect("/item");
+    return res.redirect("/");
   }
   res.render("posts/postEdit.ejs", {post});
 }));
@@ -600,7 +599,7 @@ app.delete("/admin/post/destory/:id", isAdmin, wrapAsync( async(req, res) => {
 
 //error handling routes
 app.all("*", (req, res, next) => {
-  res.redirect("/item");
+  res.redirect("/");
 });
 
 app.use((err, req, res, next) => {

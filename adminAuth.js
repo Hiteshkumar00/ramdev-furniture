@@ -6,7 +6,7 @@ module.exports.isAdmin = (req, res, next) => {
       return next();
     }else{
       req.flash("error", "You are not Admin!");
-      return res.redirect("/item");
+      return res.redirect("/");
     };
   }
   req.flash("error", "Please First Login!");
