@@ -52,21 +52,21 @@
 
   <script>
 
-    let delete_btns = document.getElementsByClassName("delete-conform");
     let hidden_delete = document.getElementById("hidden-delete");
     let hide_dissmiss = document.getElementById("hide-dismiss");
-
-    for(delete_btn of delete_btns){
-      delete_btn.addEventListener("click", () => {
-        let link = delete_btn.value;
-        hidden_delete.action=link;
+  
+    document.addEventListener("click", () => {
+      if (event.target.classList.contains("delete-conform")) {
+        let link = event.target.value;
+        hidden_delete.action = link;
         hidden_delete.hidden = false;
-      });
-    };
+      }
+    });
+  
     hide_dissmiss.addEventListener("click", () => {
       hidden_delete.hidden = true;
     });
-
+  
   </script>
 <% } %>
 

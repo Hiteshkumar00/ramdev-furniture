@@ -11,7 +11,6 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>#</th>
             <th>Name</th>
             <th>Image</th>
             <th>Price</th>
@@ -20,9 +19,8 @@
           </tr>
         </thead>
         <tbody>
-          <% let i = 1; for(let item of items){ %>
+          <%for(let item of items){ %>
           <tr>
-            <td><%= i %></td>
             <td><%= item.name %></td>
             <td><img src="<%= item.image.url.replace("/upload", "/upload/q_10") %>" alt="Item Image" class="img-thumbnail"></td>
             <td>&#8377; <% if(item.price){ %><%= item.price %> <% } %></td>
@@ -34,7 +32,7 @@
               <button value="/admin/item/destory/<%= item._id %>?_method=DELETE" class="btn delete-conform btn-outline-danger btn-sm"><i class="fa-solid fa-trash-can"></i></button>
             </td>
           </tr>
-          <% i++ } %>
+          <% } %>
         </tbody>
       </table>
     </div>
@@ -72,17 +70,17 @@
 
 <script>
 
-  let delete_btns = document.getElementsByClassName("delete-conform");
   let hidden_delete = document.getElementById("hidden-delete");
   let hide_dissmiss = document.getElementById("hide-dismiss");
 
-  for(delete_btn of delete_btns){
-    delete_btn.addEventListener("click", () => {
-      let link = delete_btn.value;
-      hidden_delete.action=link;
+  document.addEventListener("click", () => {
+    if (event.target.classList.contains("delete-conform")) {
+      let link = event.target.value;
+      hidden_delete.action = link;
       hidden_delete.hidden = false;
-    });
-  };
+    }
+  });
+
   hide_dissmiss.addEventListener("click", () => {
     hidden_delete.hidden = true;
   });
