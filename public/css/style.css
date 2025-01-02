@@ -114,6 +114,7 @@ body{
   border-radius: 0.5rem;
   aspect-ratio: 3 / 3;
   object-fit: cover;
+  cursor: pointer;
 }
 
 
@@ -377,6 +378,7 @@ body{
   border-radius: 0.5rem;
   aspect-ratio: 3 / 2.5;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .post-card-body{

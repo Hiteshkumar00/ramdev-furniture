@@ -4,7 +4,7 @@
   <div class="card show-card col-10 offset-1 col-md-8  offset-md-2 col-lg-6 offset-lg-3">
     
     <h4 class="card-title mb-3 mt-3">&nbsp;<%= item.name %></h4>
-    <img src="<%= item.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top" alt="...">
+    <img src="<%= item.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top zoom" alt="...">
     <div class="card-body show-card-body">
       <% if(item.price){ %>
         <p><b>Price : </b>&#8377; <%= item.price %></p>
@@ -14,6 +14,16 @@
       <% } %>
     </div>
   </div>
+
+  <!-- img holding iffect -->
+
+  <link rel="stylesheet" href="/css/holdingEffect.css">
+
+  <div class="hidden-zoom hide-zoom" hidden>
+    <img class="position-absolute top-50 start-50 translate-middle hidden-zoom-img">
+  </div>
+
+  <script src="/js/holdingEffect.js"></script>
   
   <!-- reviewsection -->
   <div class="show-card col-10 offset-1 col-md-8  offset-md-2 col-lg-6 offset-lg-3">
@@ -96,10 +106,10 @@
     </div>
 
   </div>
-
-
-  <!-- reviewsection -->
 </div>
+
+
+<!-- whatsapp flowing icon -->
 
 <div class="btn btn-success btn-lg static-plus-btn"><a href="https://wa.me/9484768192"><i class="fa-brands fa-whatsapp"></i></a></div>
 

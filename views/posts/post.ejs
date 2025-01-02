@@ -4,7 +4,7 @@
   <h5 class="heading-item-page mb-3">&nbsp; Activitys</h5>
   <% for(let post of posts){ %>
   <div class="card col-md-5 col-10 mb-3 post-card" href="/item/<%= post._id %>">
-    <img src="<%= post.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top mb-3" alt="...">
+    <img src="<%= post.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top mb-3 zoom" alt="...">
     <div class="card-body mb-3 post-card-body">
       <p><%= post.message || "Thank you for visiting us" %></p>
       
@@ -23,7 +23,22 @@
   <% } %>
 </div>
 
+
+
+<!-- img holding iffect -->
+<link rel="stylesheet" href="/css/holdingEffect.css">
+
+<div class="hidden-zoom hide-zoom" hidden>
+  <img class="position-absolute top-50 start-50 translate-middle hidden-zoom-img">
+</div>
+
+<script src="/js/holdingEffect.js"></script>
+
+
+
+
 <% if(currAdmin) {%>
+  <!-- delete conform button -->
   <link rel="stylesheet" href="/css/deleteAlert.css">
 
 
