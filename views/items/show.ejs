@@ -4,7 +4,7 @@
   <div class="card show-card col-10 offset-1 col-md-8  offset-md-2 col-lg-6 offset-lg-3">
     
     <h4 class="card-title mb-3 mt-3">&nbsp;<%= item.name %></h4>
-    <img src="<%= item.image.url.replace("/upload", "/upload/q_90") %>" class="card-img-top" alt="...">
+    <img src="<%= item.image.url.replace("/upload", "/upload/q_40") %>" class="card-img-top" alt="...">
     <div class="card-body show-card-body">
       <% if(item.price){ %>
         <p><b>Price : </b>&#8377; <%= item.price %></p>
@@ -107,24 +107,13 @@
 <% if(currUser){ %>
 <!-- delete review style -->
 
-<style>
-  .delete-form{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    height: 100vh;
-    width: 100%;
-    text-align: center;
-    background-color: rgb(255, 255, 255, 0.8);
-  }
-
-</style>
+<link rel="stylesheet" href="/css/deleteAlert.css">
 
 
 
 <form class="delete-form" id="hidden-delete" method="post" hidden>
   <div class="category-btns position-absolute top-50 start-50 translate-middle">
-    <p>Delete this item?</p>
+    <p>Delete this review?</p>
     <button type="submit" class="btn hidden-delete btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button>
     &nbsp;&nbsp;
     <button type="button" id="hide-dismiss" class="btn btn-primary">&nbsp; No &nbsp;</button>
