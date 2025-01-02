@@ -5,5 +5,8 @@
   height: 100vh;
   width: 100%;
   text-align: center;
-  background-color: rgb(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.delete-form p{
+  color: #ffffff;
 }
