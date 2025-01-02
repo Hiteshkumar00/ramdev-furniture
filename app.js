@@ -273,17 +273,14 @@ app.get("/user/signup", (req, res) => {
 const sendOtp = require("./emailVerify/sendOtp.js");
 const userExist = require("./emailVerify/userExist.js");
 
-app.post("/user/verifyemail",wrapAsync(async (req, res) => {
+app.post("/user/verifyemail", userExist, wrapAsync(async (req, res) => {
   const user = req.body.user;
-  if(user.username){
-    await userExist(user.username, user.email, req, res);
-  }
   const redirect = req.body.redirect;
-  const otp = Math.floor(Math.random() * 100000);
+  const otp = Math.floor((Math.random() + 1) * 10000);
   await sendOtp(user, otp);
   req.flash("success", "Sent OTP on your email");
   req.session.verify_data= {user, otp, redirect};
-  res.redirect("/user/verifyemail");
+  return res.redirect("/user/verifyemail");
 }));
 
 app.get("/user/verifyemail", (req, res) => {
@@ -376,7 +373,7 @@ app.post("/user/forgot", wrapAsync(async(req, res) => {
     return res.redirect("/user/signup");
   }
   const redirect = req.body.redirect;
-  const otp = Math.floor(Math.random() * 100000);
+  const otp = Math.floor((Math.random() + 1) * 10000);
   await sendOtp(user, otp);
   req.flash("success", "Sent OTP on your email");
   req.session.verify_data= {user, otp, redirect};
